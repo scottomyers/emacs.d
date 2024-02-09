@@ -23,18 +23,23 @@
 
 
 ;; Packages
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
 (use-package exec-path-from-shell
+  :ensure t
   :config (when (or (memq window-system '(mac ns x))
 		    (daemonp))
 	    (exec-path-from-shell-initialize)))
 
-(use-package magit)
+(use-package magit
+  :ensure t)
 
 (use-package which-key
-  :config
-  (which-key-mode))
+  :ensure t
+  :config (which-key-mode))
 
-(use-package yaml-mode)
+(use-package yaml-mode
+  :ensure t)
 
 
 ;; Tree-sitter
@@ -100,6 +105,7 @@
       word-wrap nil)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (column-number-mode t)
+(scroll-bar-mode -1)
 (tool-bar-mode -1)
 
 (defun sm/gui-customizations ()

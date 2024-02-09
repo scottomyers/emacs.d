@@ -5,4 +5,4 @@ if [ $# -ne 3 ]; then
     exit 1
 fi
 
-git subtree add --prefix="site-lisp/${2}" "${1}" "${2}" --squash
+git subtree add --prefix="site-lisp/${1}" "${2}" "${3}" --squash

@@ -1,8 +1,8 @@
 #!/bin/sh
 
-if [ $# -ne 2 ]; then
-    echo "Usage: $0 package-name url"
+if [ $# -ne 3 ]; then
+    echo "Usage: $0 package-name url git-branch"
     exit 1
 fi
 
-git submodule add "${2}" "./site-lisp/${1}"
+git subtree add --prefix="site-lisp/${2}" "${1}" "${2}" --squash

@@ -7,9 +7,9 @@
   (add-hook 'emacs-startup-hook
 	    (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
-;; (setq site-lisp-dirs (directory-files (expand-file-name "site-lisp" user-emacs-directory) t directory-files-no-dot-files-regexp))
-;; (dolist (d site-lisp-dirs)
-;;   (add-to-list 'load-path d))
+(setq site-lisp-dirs (directory-files (expand-file-name "site-lisp" user-emacs-directory) t directory-files-no-dot-files-regexp))
+(dolist (d site-lisp-dirs)
+  (add-to-list 'load-path d))
 
 (defun sm/in-load-path-p (package)
   (let ((present nil))

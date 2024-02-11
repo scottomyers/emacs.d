@@ -7,7 +7,8 @@
   (add-hook 'emacs-startup-hook
 	    (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
-(setq site-lisp-dirs (directory-files (expand-file-name "site-lisp" user-emacs-directory) t directory-files-no-dot-files-regexp))
+(defvar site-lisp-dirs
+  (directory-files (expand-file-name "site-lisp" user-emacs-directory) t directory-files-no-dot-files-regexp))
 (dolist (d site-lisp-dirs)
   (add-to-list 'load-path d))
 
@@ -23,7 +24,12 @@
 
 
 ;; Packages
+(require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
+(use-package company
+  :ensure t
+  :config (global-company-mode))
 
 (use-package exec-path-from-shell
   :ensure t
@@ -31,7 +37,13 @@
 		    (daemonp))
 	    (exec-path-from-shell-initialize)))
 
+(use-package go-mode
+  :ensure t)
+
 (use-package magit
+  :ensure t)
+
+(use-package markdown-mode
   :ensure t)
 
 (use-package which-key
@@ -52,10 +64,10 @@
 ;; Eglot
 (add-hook 'eglot-managed-mode-hook
 	  (lambda () 
-	    (define-key eglot-mode-map (kbd "C-c f") 'eglot-format)
-	    (define-key eglot-mode-map (kbd "C-c h") 'eldoc)
-	    (define-key eglot-mode-map (kbd "C-c o") 'eglot-code-action-organize-imports)
-	    (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
+	    (define-key eglot-mode-map (kbd "C-c e f") 'eglot-format)
+	    (define-key eglot-mode-map (kbd "C-c e h") 'eldoc)
+	    (define-key eglot-mode-map (kbd "C-c e o") 'eglot-code-action-organize-imports)
+	    (define-key eglot-mode-map (kbd "C-c e r") 'eglot-rename)
 	    (define-key eglot-mode-map (kbd "<f6>") 'xref-find-definitions)))
 
 (setq eglot-autoshutdown t
@@ -83,6 +95,7 @@
 
 
 ;; Keybinds
+(global-set-key (kbd "C-c r") 'revert-buffer)
 (global-set-key (kbd "M-z") 'zap-up-to-char)
 (global-set-key (kbd "C-c /") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-S-V") 'scroll-down-command)
@@ -94,17 +107,23 @@
       bookmark-save-flag 1
       completion-ignore-case t
       confirm-kill-processes nil
-      inhibit-startup-message t
       inhibit-splash-screen t
+      inhibit-startup-message t
+      isearch-lazy-count t
       make-backup-files nil
       network-security-level 'high
       org-completion-use-ido t
       read-buffer-completion-ignore-case t
       read-file-name-completion-ignore-case t
       ring-bell-function 'ignore
+      search-whitespace-regexp ".*?"
+      use-dialog-box nil
       word-wrap nil)
+
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (column-number-mode t)
+(global-auto-revert-mode 1)
+(global-display-line-numbers-mode 1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 
@@ -128,7 +147,7 @@
   (sm/mac-customizations))
 
 (defun sm/prog-mode-hooks ()
-  (display-line-numbers-mode 1))
+  )
 (add-hook 'prog-mode-hook 'sm/prog-mode-hooks)
 
 ;; Custom file

@@ -25,3 +25,5 @@ flycheck_*.el
 custom.el
 projects
 transient
+/history
+/recentf

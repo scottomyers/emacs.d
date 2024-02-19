@@ -1,4 +1,12 @@
-;;; -*- lexical-binding: t -*-
+;;; sm-custom.el --- keybindings and customizations  -*- lexical-binding: t -*-
+
+;; keybindings
+(global-set-key (kbd "C-c r") 'revert-buffer)
+(global-set-key (kbd "M-z") 'zap-up-to-char)
+(global-set-key (kbd "C-c /") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-S-V") 'scroll-down-command)
+
+;; 
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq auto-save-default nil

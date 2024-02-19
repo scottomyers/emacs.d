@@ -22,23 +22,14 @@
 (use-package markdown-mode
   :ensure t)
 
-(use-package orderless
-  :ensure t
-  :init
-  (setq completion-styles '(orderless basic)
-        completion-category-defaults nil
-        completion-category-overrides '((file (styles partial-completion)))))
-
-(use-package vertico
-  :ensure t
-  :init
-  (vertico-mode))
-
 (use-package which-key
   :ensure t
   :config (which-key-mode))
 
 (use-package yaml-mode
+  :ensure t)
+
+(use-package yasnippet
   :ensure t)
 
 (defvar sm-packages-loaded t)

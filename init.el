@@ -1,4 +1,4 @@
-;;; -*- lexical-binding: t -*-
+;;; init.el  -*- lexical-binding: t -*-
 (let ((normal-gc-cons-threshold (* 20 1024 1024))
       (init-gc-cons-threshold (* 128 1024 1024)))
   (setq gc-cons-threshold init-gc-cons-threshold)
@@ -11,14 +11,8 @@
 (dolist (d site-lisp-dirs)
   (add-to-list 'load-path d))
 
-(defun sm/in-load-path-p (package)
-  (let ((present nil))
-    (dolist (p load-path present)
-      (when (string-suffix-p package p)
-	(setq present t)))))
-
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
+(require 'sm-functions)
 (require 'sm-packages)
-(require 'sm-keybinds)
 (require 'sm-custom)

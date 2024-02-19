@@ -30,8 +30,8 @@
   :ensure t)
 
 (use-package yasnippet
-  :ensure t)
-
-(defvar sm-packages-loaded t)
+  :ensure t
+  :config
+  (yas-global-mode 1))
 
 (provide 'sm-packages)

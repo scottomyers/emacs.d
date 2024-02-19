@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: elisp-package
+# key: elisp
+# --
+;;; ${1:package-name}.el --- ${2:Description}  -*- lexical-binding: t; -*-
+
+;; Author: ${3:Your Name} <${4:email@example.com}>
+;; Version: ${5:0.1.0}
+;; Package-Requires: (${6:dependency "version"})
+;; Keywords: ${7:keywords}
+;; URL: ${8:http://example.com/your/package}
+
+;;; Commentary:
+
+;; ${9:Commentary about the package.}
+
+;;; Code:
+
+$0
+
+(provide '${1:package-name})
+;;; ${1:package-name}.el ends here

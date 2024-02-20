@@ -14,6 +14,7 @@
 	    (define-key eglot-mode-map (kbd "<f6>") 'xref-find-definitions)))
 
 (setq eglot-autoshutdown t
+      eglot-report-progress nil
       eldoc-echo-area-use-multiline-p nil)
 
 

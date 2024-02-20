@@ -15,4 +15,5 @@
 
 (require 'sm-functions)
 (require 'sm-packages)
+(require 'sm-programming)
 (require 'sm-custom)

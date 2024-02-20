@@ -16,6 +16,7 @@
 (setq eglot-autoshutdown t
       eldoc-echo-area-use-multiline-p nil)
 
+
 ;; Go
 (autoload 'go-mode "go-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
@@ -34,5 +35,9 @@
 (when (sm/in-load-path-p "sly")
   (require 'sly-autoloads)
   (setq inferior-lisp-program "sbcl"))
+
+
+;; Python
+(add-hook 'python-mode-hook 'eglot-ensure)
 
 (provide 'sm-programming)

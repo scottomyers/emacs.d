@@ -38,6 +38,6 @@
 
 
 ;; Python
-(add-hook 'python-mode-hook 'eglot-ensure)
+;(add-hook 'python-mode-hook 'eglot-ensure)
 
 (provide 'sm-programming)
